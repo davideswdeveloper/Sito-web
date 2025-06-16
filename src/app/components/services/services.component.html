@@ -1,0 +1,13 @@
+<section class="services" id="servizi">
+  <div class="container">
+    <h2>I Miei Servizi</h2>
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <div class="service-card">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section> 

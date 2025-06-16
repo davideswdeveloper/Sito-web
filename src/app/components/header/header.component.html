@@ -1,0 +1,21 @@
+<header class="header">
+  <nav class="main-nav">
+    <div class="logo">
+      <h1>Dott. Davide Gagliostro</h1>
+      <p>Biologo Nutrizionista</p>
+    </div>
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#percorsi">Percorsi Nutrizionali</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+      <li><a href="#receipts">Ricette</a></li>
+      <li><a href="#prenota" class="cta-button">PRENOTA</a></li>
+    </ul>
+  </nav>
+</header> 
