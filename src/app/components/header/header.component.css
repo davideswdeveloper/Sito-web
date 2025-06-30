@@ -12,6 +12,11 @@
   color: var(--primary-color);
 }
 
+
+.logo p {
+  color:black
+}
+
 .nav-links a {
   text-decoration: none;
   color: var(--text-color);

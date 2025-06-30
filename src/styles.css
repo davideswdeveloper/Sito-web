@@ -63,6 +63,11 @@ body {
   color: var(--primary-color);
 }
 
+.logo p{
+  color: var(--primary-color);
+
+}
+
 .nav-links {
   display: flex;
   list-style: none;
