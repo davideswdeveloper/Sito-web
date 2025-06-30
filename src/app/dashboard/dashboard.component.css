@@ -1,0 +1,222 @@
+/* Layout principale */
+.scrolly-container {
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Colonna visiva che si blocca */
+.scrolly-visuals {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
+  padding: 2rem;
+}
+
+/* Stili per il componente receipts nella colonna visiva */
+.scrolly-visuals app-receipts {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Override degli stili del componente receipts per l'integrazione */
+.scrolly-visuals app-receipts .content-wrapper {
+  min-height: auto !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.scrolly-visuals app-receipts .scroll-section {
+  display: none !important;
+}
+
+.scrolly-visuals app-receipts .plate-container {
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+  height: auto !important;
+}
+
+.scrolly-visuals app-receipts .plate {
+  width: 280px !important;
+  height: 280px !important;
+}
+
+/* Colonna di testo che scorre */
+.scrolly-content {
+  flex: 1;
+  background: var(--surface-color);
+}
+
+/* Ogni sezione di testo deve avere abbastanza altezza */
+.step {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  border-left: 1px solid var(--border-color);
+}
+
+.step h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.step p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .scrolly-container {
+    flex-direction: column;
+  }
+  
+  .scrolly-visuals {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+  }
+  
+  .scrolly-visuals app-receipts .plate {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .step {
+    min-height: 50vh;
+    padding: 2rem;
+  }
+  
+  .step h2 {
+    font-size: 2rem;
+  }
+  
+  .step p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Gestione delle immagini sovrapposte - mantenuto per compatibilità */
+.plate-container {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+}
+
+.plate-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.plate-container img.is-active {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-shape-divider-bottom-1751296690 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1751296690 svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 98px;
+}
+
+.custom-shape-divider-bottom-1751296690 .shape-fill {
+  fill: #FFFFFF;
+}
+
+
+
+.hero-section-nutrition {
+  position: relative;
+  margin-top: 80px;
+
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: #fff;
+  padding: 100px 20px 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  z-index: 100;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #388e3c;
+}
+
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}

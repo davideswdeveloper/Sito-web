@@ -6,18 +6,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./services.component.css']
 })
 export class ServicesComponent {
-  services = [
-    {
-      title: 'Nutrizione Funzionale',
-      description: 'Piani nutrizionali personalizzati per ritrovare il benessere attraverso un\'alimentazione equilibrata e funzionale.'
-    },
-    {
-      title: 'Percorsi Nutrizionali',
-      description: 'Diete personalizzate, nutrizione sportiva, dieta chetogenica e molto altro.'
-    },
-    {
-      title: 'Bioimpedenziometria',
-      description: 'Analisi della composizione corporea per un piano nutrizionale preciso e mirato.'
-    }
-  ];
+services = [
+  {
+    title: 'Dieta per disbiosi',
+    description: 'Strategie alimentari per il riequilibrio della flora intestinale e il benessere digestivo.'
+  },
+  {
+    title: 'Analisi dello stato nutrizionale',
+    description: 'Valutazione approfondita dello stato nutrizionale generale per individuare eventuali carenze.'
+  },
+  {
+    title: 'Analisi della composizione corporea',
+    description: 'Esame della distribuzione di massa magra e grassa per un monitoraggio preciso.'
+  },
+  {
+    title: 'Analisi bioimpedenziometrica',
+    description: 'Misurazione precisa della composizione corporea tramite bioimpedenziometria.'
+  },
+  {
+    title: 'Prima visita nutrizionistica',
+    description: 'Incontro conoscitivo per impostare un percorso nutrizionale su misura.'
+  },
+  {
+    title: 'Visita nutrizionale di controllo',
+    description: 'Appuntamenti di follow-up per valutare i risultati e adattare il piano alimentare.'
+  }
+];
+
 } 

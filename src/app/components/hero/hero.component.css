@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: var(--white);
+  color: var(--text-color);
   margin-top: 80px;
 }
 
@@ -19,13 +19,13 @@
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: var(--text-color);
 }
 
 .hero-content p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: var(--white);
+  color: var(--text-color);
 }
 
 .dish-animation {

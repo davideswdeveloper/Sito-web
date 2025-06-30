@@ -1,205 +1,219 @@
-@mixin shadow {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-@mixin bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-}
-.container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.content-body {
-    position: relative;
-    overflow: hidden;
-    overflow-y: scroll;
-    width: 400px;
-    height: 800px;
-    @include shadow;
-}
-
-.bacground-images {
-    position: absolute;
-    overflow: hidden;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-}
-
-.bg1 {
-    @include bg();
-    background-position: -90px;
-    background-image: url("https://i.postimg.cc/y8y4gWrP/bg1.jpg");
-}
-.bg2 {
-    @include bg();
-    background-position: -120px;
-    background-image: url("https://i.postimg.cc/rmzvPjyn/bg2.jpg");
-}
-.bg3 {
-    @include bg();
-    background-position: -120px;
-    background-image: url("https://i.postimg.cc/SsTVwb1C/bg5.jpg");
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    color: white;
-}
-.header-title {
-    font-family: "Krona One", sans-serif;
-    text-transform: uppercase;
-    font-size: 2rem;
-    letter-spacing: 2px;
-}
-.menu {
-    position: relative;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-    font-size: 30px;
-    sl-icon:first-child {
-        top: 0;
-        position: absolute;
-    }
-    sl-icon:last-child {
-        bottom: 0;
-        position: absolute;
-    }
-}
-
-.hero-title {
-    padding: 0 20px 20px 20px;
-    margin: 40px 0 250px 0;
-    p {
-        font-family: sans-serif;
-        text-transform: uppercase;
-        color: white;
-    }
-    h1 {
-        font-family: "Krona One", sans-serif;
-        color: white;
-        font-size: 1.5rem;
-        text-align: right;
-    }
-}
-.item-list {
-    position: absolute;
-    margin-left: 10px;
-    display: flex;
-}
-.item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin: 5px;
-    width: 170px;
-    height: 220px;
-    border-radius: 10px;
-    background-color: white;
-}
-.item.active {
-  position: absolute;
-  bottom: 0;
-  height: 340px;
-  width: 100%;
-  border-radius: 0;
-  margin: 0;
-  z-index: 1000;
-}
-.item.active .item-img {
-  max-width: 50%;
-  bottom: 240px;
-}
-.item.active .item-description {
-  bottom: 140px;
-}
-.item-img {
-    position: absolute;
-    align-self: center;
-    display: block;
-    height: auto;
-    bottom: 100px;
-    max-width: 100%;
-}
-.item-description {
-    position: absolute;
-    bottom: 0;
-    h1 {
-        text-transform: uppercase;
-        padding: 15px 15px 0 15px;
-        font-size: 1rem;
-    }
-    p {
-        font-family: sans-serif;
-        padding: 0 15px 15px 15px;
-        color: gray;
-    }
-}
-
-/*******generic********/
-
-
-
 body {
-    margin: 0 auto;
-    background-color: white;
-    background-color: gray;
+  margin: 0;
+  height: 400vh; /* spazio per scrollare */
+  background: var(--background-color);
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+.content-wrapper {
+  min-height: 300vh;
+  background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
+  padding: 20px;
 }
 
-li {
-    font-family: "Poppins", sans-serif;
-    list-style-type: none;
-}
-
-h1 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-  
-}
-
-h2 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-}
-
-p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-}
-
-
-
-.box {
-  width: 300px;
-  height: 300px;
-  background-color: blueviolet;
-  border-radius: 25px;
-  margin: 0 auto;
-}
-
-.section {
+.scroll-section {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  color: var(--text-color);
+}
+
+.scroll-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.scroll-section h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.scroll-section p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.plate-container {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.plate {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: url('/assets/images/piattoVuotoG2.png') center/cover no-repeat, var(--white);
+  border: 8px solid var(--white);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.2),
+    inset 0 2px 10px rgba(255,255,255,0.8);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.plate:hover {
+  transform: scale(1.05);
+}
+
+.plate-rim {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 8px solid var(--surface-color);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.plate-content {
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  border-radius: 50%;
+  background: conic-gradient(
+
+    transparent 100% 100%
+  );
+  z-index: 2;
+}
+
+.plate-full {
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  border-radius: 50%;
+  background: url('/assets/images/piattoPienoG2.png') center/cover no-repeat;
+  z-index: 3;
+  mask-image: conic-gradient(#000 0deg, transparent 0deg 360deg);
+  -webkit-mask-image: conic-gradient(#000 0deg, transparent 0deg 360deg);
+  pointer-events: none;
+}
+
+.food-section {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  transform-origin: 100% 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+}
+
+.food-section.protein {
+  top: 0;
+  right: 0;
+  background: conic-gradient(from 0deg, var(--danger-color) 0deg, var(--danger-color) 90deg, transparent 90deg);
+  transform: rotate(0deg);
+}
+
+.food-section.vegetables {
+  top: 0;
+  left: 0;
+  background: conic-gradient(from 90deg, var(--accent-color) 90deg, var(--accent-color) 180deg, transparent 180deg);
+  transform: rotate(90deg);
+}
+
+.food-section.carbs {
+  bottom: 0;
+  left: 0;
+  background: conic-gradient(from 180deg, var(--warning-color) 180deg, var(--warning-color) 270deg, transparent 270deg);
+  transform: rotate(180deg);
+}
+
+.food-section.fats {
+  bottom: 0;
+  right: 0;
+  background: conic-gradient(from 270deg, var(--primary-color) 270deg, var(--primary-color) 360deg, transparent 360deg);
+  transform: rotate(270deg);
+}
+
+.food-label {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--button-text);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  padding: 2px 10px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.label-verdure {
+  top: 18%;
+  left: 55%;
+  transform: rotate(-20deg);
+  background: var(--accent-color);
+}
+.label-carboidrati {
+  top: 60%;
+  left: 60%;
+  transform: rotate(30deg);
+  background: var(--warning-color);
+  color: var(--text-color);
+}
+.label-grassi {
+  top: 80%;
+  left: 38%;
+  transform: rotate(60deg);
+  background: var(--primary-color);
+}
+.label-proteine {
+  top: 60%;
+  left: 10%;
+  transform: rotate(-30deg);
+  background: var(--danger-color);
+}
+
+/* Animazioni per le sezioni */
+.food-section.animate {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plate {
+    width: 240px;
+    height: 240px;
+    border-width: 5px;
+  }
+  
+  .scroll-section h2 {
+    font-size: 2rem;
+  }
+  
+  .scroll-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .scroll-section p {
+    font-size: 1rem;
+  }
+  
+  .plate-content {
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+  }
 }

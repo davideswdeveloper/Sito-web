@@ -1,12 +1,12 @@
 .services {
   padding: 5rem 0;
-  background-color: var(--light-gray);
+  background-color: var(--background-color);
 }
 
 .services h2 {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 
 .services-grid {
@@ -17,11 +17,12 @@
 }
 
 .service-card {
-  background: var(--white);
+  background: var(--surface-color);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  color: var(--text-color);
 }
 
 .service-card:hover {
@@ -43,3 +44,75 @@
     grid-template-columns: 1fr;
   }
 } 
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  transition: none;
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-img img {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-img img:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+
+.feature-text {
+  flex: 1;
+  min-width: 280px;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.feature-text h2 {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 1rem;
+  }
+  .feature-row,
+  .feature-row.reverse {
+    flex-direction: column;
+  }
+  .feature-img img {
+    max-width: 100%;
+  }
+}
