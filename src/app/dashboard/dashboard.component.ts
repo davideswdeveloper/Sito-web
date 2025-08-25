@@ -33,6 +33,9 @@ export class DashboardComponent implements AfterViewInit {
 
     setTimeout(() => {
       this.initScrollyAnimation();
+      this.initMetodoScrollyAnimation();
+      this.initRevealOnScroll();
+      this.initHeroAnimation();
     }, 100);
   }
 
@@ -103,5 +106,85 @@ export class DashboardComponent implements AfterViewInit {
 
     // Inizializza l'animazione
     updatePlateAnimation(1);
+  }
+
+  private initMetodoScrollyAnimation(): void {
+    const metodoSteps = this.document.querySelectorAll('.metodo-step');
+    const metodoStepTexts = this.document.querySelectorAll('.metodo-step-text');
+    const metodoBgImages = this.document.querySelectorAll('.metodo-bg-image');
+    
+    if (metodoSteps.length === 0) return;
+
+    // Funzione per aggiornare gli step attivi
+    const updateMetodoSteps = (stepNumber: number) => {
+      // Nascondi tutti gli step
+      metodoSteps.forEach((step, index) => {
+        if (index === stepNumber) {
+          step.classList.add('is-active');
+        } else {
+          step.classList.remove('is-active');
+        }
+      });
+      
+      // Nascondi tutte le immagini di sfondo
+      metodoBgImages.forEach((image, index) => {
+        if (index === stepNumber) {
+          image.classList.add('is-active');
+        } else {
+          image.classList.remove('is-active');
+        }
+      });
+    };
+
+    // Configura l'Intersection Observer per ogni step di testo
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-20% 0px -20% 0px', // Si attiva quando il 60% centrale è visibile
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stepNumber = parseInt(entry.target.getAttribute('data-step') || '0');
+          updateMetodoSteps(stepNumber);
+        }
+      });
+    }, observerOptions);
+
+    // Attacca l'observer a ogni step di testo
+    metodoStepTexts.forEach(step => observer.observe(step));
+
+    // Inizializza l'animazione
+    updateMetodoSteps(0);
+  }
+
+  private initRevealOnScroll(): void {
+    const revealables = Array.from(this.document.querySelectorAll<HTMLElement>('.reveal-on-scroll'));
+    if (revealables.length === 0) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          const delayValue = el.dataset['delay'];
+          const delay = delayValue ? parseFloat(delayValue) : 0;
+          if (delay) {
+            el.style.transitionDelay = `${delay}s`;
+          }
+          el.classList.add('is-visible');
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealables.forEach(el => io.observe(el));
+  }
+
+  private initHeroAnimation(): void {
+    const hero = this.document.querySelector('.home-hero__content');
+    if (hero) {
+      (hero as HTMLElement).classList.add('is-visible');
+    }
   }
 }

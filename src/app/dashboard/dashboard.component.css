@@ -141,11 +141,6 @@
 
 
 
-
-
-
-
-
 .custom-shape-divider-bottom-1751296690 {
   position: absolute;
   bottom: 0;
@@ -166,7 +161,6 @@
 .custom-shape-divider-bottom-1751296690 .shape-fill {
   fill: #FFFFFF;
 }
-
 
 
 .hero-section-nutrition {
@@ -222,13 +216,15 @@
   background-color: #4caf50;
   color: white;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 9999px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #388e3c;
+  background-color: #6b9080;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 .hero-image img {
@@ -312,4 +308,535 @@
 
   height: 100%;
   object-fit: cover;
+}
+
+.home-hero {
+  position: relative;
+  margin-top: 80px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://picsum.photos/seed/nutrition/1920/1080');
+  background-size: cover;
+  background-position: center;
+  color: #22223b;
+}
+
+.home-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(242, 233, 228, 0.8);
+}
+
+.home-hero__content {
+  position: relative;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms ease, transform 800ms ease;
+}
+
+.home-hero__content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.home-hero__subtitle {
+  margin-top: 8px;
+  font-size: 1.5rem;
+  color: #4a4e69;
+}
+
+.home-hero__tagline {
+  margin-top: 16px;
+  font-size: 1.25rem;
+  color: #4f7763;
+}
+
+/* Generic section wrapper */
+.section {
+  padding: 80px 16px;
+  background: #fff;
+}
+
+.section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section__title {
+  font-size: 2rem;
+  color: #22223b;
+}
+
+.section__subtitle {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  color: #4a4e69;
+}
+
+/* About section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-text .about-paragraph {
+  color: #4a4e69;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.about-link {
+  color: #3a5a40;
+  font-weight: 700;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+/* Metodo section */
+.metodo-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+}
+
+/* Container principale per l'effetto scrolly */
+.metodo-scrolly-container {
+  display: flex;
+  position: relative;
+  min-height: 400vh; /* 4 step * 100vh */
+}
+
+/* Colonna visiva che si blocca */
+.metodo-visuals {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem;
+}
+
+.metodo-content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Step individuali nella colonna visiva */
+.metodo-step {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  max-width: 400px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.metodo-step.is-active {
+  opacity: 1;
+}
+
+.metodo-step .metodo-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.metodo-step h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.metodo-step p {
+  color: #f8f9fa;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Immagini di sfondo che cambiano */
+.metodo-background-images {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.metodo-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  border-radius: 20px;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.metodo-bg-image.is-active {
+  opacity: 1;
+}
+
+/* Colonna di testo che scorre */
+.metodo-content {
+  flex: 1;
+  background: #ffffff;
+}
+
+/* Ogni sezione di testo deve avere abbastanza altezza */
+.metodo-step-text {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  border-left: 1px solid rgba(79, 119, 99, 0.2);
+}
+
+.metodo-step-text h2 {
+  color: #3a5a40;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.metodo-step-text p {
+  color: #4a4e69;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+/* Responsive design per l'effetto scrolly */
+@media (max-width: 768px) {
+  .metodo-scrolly-container {
+    flex-direction: column;
+  }
+  
+  .metodo-visuals {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+  }
+  
+  .metodo-step-text {
+    min-height: 50vh;
+    padding: 2rem;
+  }
+  
+  .metodo-step-text h2 {
+    font-size: 2rem;
+  }
+  
+  .metodo-step-text p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mantieni gli stili esistenti per le card (per compatibilità) */
+.metodo-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .metodo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .metodo-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.metodo-card {
+  background: #ffffff;
+  padding: 32px 24px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.metodo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4f7763, #6b9080, #4f7763);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.metodo-card:hover::before {
+  transform: scaleX(1);
+}
+
+.metodo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: rgba(79, 119, 99, 0.2);
+}
+
+.metodo-card .metodo-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.metodo-card h3 {
+  font-size: 1.3rem;
+  color: #22223b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.metodo-card p {
+  color: #4a4e69;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.metodo-cta {
+  background: linear-gradient(135deg, #4f7763 0%, #6b9080 100%);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 15px 35px rgba(79, 119, 99, 0.3);
+}
+
+.metodo-cta-content h3 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.metodo-cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-large {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn-large:hover {
+  background: rgba(255,255,255,0.3);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+/* Cards grid (services) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.card__icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.card__title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #22223b;
+}
+
+.card__text {
+  color: #4a4e69;
+  font-size: 0.95rem;
+}
+
+/* Approach visual wrapper */
+.approach-section {
+  background: #fdfdfd;
+}
+
+.approach__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Recipes teaser */
+.recipes-grid-teaser {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .recipes-grid-teaser {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.recipe-card-teaser {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card-teaser:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.recipe-card-teaser img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-card-teaser__body {
+  padding: 16px;
+}
+
+.section__cta {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* Contact section */
+.contact-form-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-form .form-field {
+  margin-bottom: 16px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  color: #4a4e69;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #6b9080;
+  box-shadow: 0 0 0 3px rgba(107, 144, 128, 0.2);
+}
+
+.contact-form .form-actions {
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Reveal on scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
