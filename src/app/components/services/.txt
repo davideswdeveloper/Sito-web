@@ -1,32 +1,3 @@
-<section class="hero">
-  <div class="hero-text">
-    <h1>
-      Il tuo percorso verso il 
-      <span class="highlight">benessere</span> inizia qui.
-    </h1>
-    <p>
-      Scopri come un'alimentazione sana e personalizzata può trasformare la tua vita. 
-      Sono qui per guidarti, passo dopo passo.
-    </p>
-    <button class="cta">Scopri i Servizi</button>
-  </div>
-
-  <div class="hero-image">
-    <img src="assets/parigi.jpg" alt="Hero Image">
-  </div>
-
-  
-</section>
-
-<section class="services-intro">
-  <h2>I Miei Servizi</h2>
-  <p>
-    Offro una gamma completa di servizi nutrizionali per aiutarti a raggiungere i tuoi 
-    obiettivi di salute e benessere, qualunque essi siano.
-  </p>
-</section>
-
-
 <section class="features">
   <!-- Primo blocco -->
   <div class="feature-row">

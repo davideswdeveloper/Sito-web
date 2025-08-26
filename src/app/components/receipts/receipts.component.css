@@ -1,13 +1,9 @@
-body {
-  margin: 0;
-  height: 400vh; /* spazio per scrollare */
-  background: var(--background-color);
-}
+/* Rimuovo override globale del body per rispettare lo stile del sito */
 
 .content-wrapper {
-  min-height: 300vh;
-  background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
-  padding: 20px;
+  min-height: 300vh; /* spazio per scrollare per l'animazione */
+  background: var(--background-color);
+  padding: 2rem 1rem;
 }
 
 .scroll-section {

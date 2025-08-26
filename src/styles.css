@@ -4,12 +4,14 @@
 :root {
   --primary-color: #e57373;      /* Colore principale (es. cuore, bottoni) */
   --accent-color: #81c784;       /* Colore accento (es. foglia, link) */
+  --accent-color-2: var(--accent-color); /* Clone per gradienti/CTA */
+  --accent-color-3: #a5d6a7;     /* Terza variante verde (più soft) */
   --secondary-color: #ffd166;    /* Secondario */
-  --background-color: #ededed;   /* Sfondo principale */
+  --background-color: #f9f9f9;   /* Sfondo principale */
   --surface-color: #f7f7f7;      /* Card, box, navbar */
   --white: #fff;                 /* Bianco */
   --black: #000;                 /* Nero */
-  --text-color: #ffffff;         /* Testo principale */
+  --text-color: #4A4A4A;         /* Testo principale (grigio scuro) */
   --text-secondary: #bdbdbd;     /* Testo secondario */
   --border-color: #444444;       /* Bordo elementi */
   --button-text: #fff;           /* Testo bottoni */
@@ -21,6 +23,17 @@
   --medium-gray: #888;
   --dark-gray: #222;
 }
+
+.logo-image{
+  width: auto;
+  height: 80px;
+}
+
+.header{
+  height: 100px;
+
+}
+
 
 * {
   margin: 0;
@@ -100,14 +113,14 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/images/hero-bg.jpg');
+  background: var(--background-color);
   background-size: cover;
   background-position: center;
   height: 80vh;
   display: flex;
   align-items: center;
   text-align: center;
-  color: var(--white);
+  color: var(--text-color);
   margin-top: 80px;
 }
 

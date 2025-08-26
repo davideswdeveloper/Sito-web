@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-services',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css']
 })
-export class ServicesComponent {
+export class ServicesComponent implements AfterViewInit, OnDestroy {
+private intersectionObserver?: IntersectionObserver;
+
+constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
 services = [
   {
     title: 'Dieta per disbiosi',
@@ -32,5 +39,29 @@ services = [
     description: 'Appuntamenti di follow-up per valutare i risultati e adattare il piano alimentare.'
   }
 ];
+
+ngAfterViewInit(): void {
+if (!isPlatformBrowser(this.platformId)) return;
+
+const revealTargets: NodeListOf<HTMLElement> = document.querySelectorAll('.feature-text h2, .feature-text p, .services-intro h2, .services-intro p, .service-card');
+
+revealTargets.forEach((el) => el.classList.add('reveal'));
+
+this.intersectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const element = entry.target as HTMLElement;
+    if (entry.isIntersecting) {
+      element.classList.add('in-view');
+      this.intersectionObserver?.unobserve(element);
+    }
+  });
+}, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+
+revealTargets.forEach((el) => this.intersectionObserver?.observe(el));
+}
+
+ngOnDestroy(): void {
+this.intersectionObserver?.disconnect();
+}
 
 } 

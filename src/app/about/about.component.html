@@ -1,84 +1,100 @@
-<header class="hero">
-    <h1>Il mio approccio al benessere</h1>
-    <p>Scorri per scoprire il percorso che faremo insieme</p>
-    <div class="arrow-down">↓</div>
-</header>
+<section class="about-hero">
+  <div class="hero-blob hero-blob-primary" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-secondary" aria-hidden="true"></div>
+  <h1>Il Mio Approccio al Benessere</h1>
+  <p>Scorri per scoprire il percorso che faremo insieme verso un'alimentazione consapevole e un benessere duraturo.</p>
+  <div class="arrow-down" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4v16m0 0l-6-6m6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
 
-<!-- Contenitore principale per lo scroll-sync dell'animazione -->
 <div class="main-content-wrapper">
+  <div class="background-arrow-container">
+    <svg id="animated-arrow-svg" width="200" height="100%" viewBox="0 0 200 2400" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="path-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color: var(--primary-color)" />
+          <stop offset="100%" style="stop-color: var(--accent-color)" />
+        </linearGradient>
+      </defs>
+      <path id="arrow-path"
+            d="M 100 0 C 100 400, 200 600, 100 800 S 0 1000, 100 1200 S 200 1400, 100 1600 S 0 1800, 100 2000 S 200 2200, 100 2400"
+            stroke="url(#path-gradient)"
+            stroke-width="4"
+            fill="none">
+      </path>
+    </svg>
+  </div>
 
-    <!-- La freccia SVG che verrà animata in background -->
-    <div class="background-arrow-container">
-        <svg id="animated-arrow-svg" width="200" height="2200" viewBox="0 0 200 2200" preserveAspectRatio="xMidYMax meet">
-            <path id="arrow-path" d="M 100 0 C 100 200, 200 300, 100 500 S 0 700, 100 900 S 200 1100, 100 1300 S 0 1500, 100 1700 S 200 1900, 100 2100" stroke-width="4" fill="none"/>
-        </svg>
-    </div>
+  <main class="content-sections">
+    <section class="feature-section fade-in-section">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Chi sono</h2>
+          <p>
+            Sono la <b>Dottoressa Maria Pia Raso</b>, biologa nutrizionista con la passione per un'alimentazione consapevole.
+            Credo che il cibo sia medicina per il corpo e nutrimento per lo spirito.
+          </p>
+        </div>
+        <div class="image-content">
+          <div class="image-blob blob-shape-1">
+            <img src="assets/images/pia.jpeg" alt="Dottoressa Raso sorridente" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Contenitore per le sezioni di contenuto -->
-    <div class="content-sections">
+    <section class="feature-section fade-in-section">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>I miei studi</h2>
+          <p>
+            Laureata in <b>Scienze dell'Alimentazione</b> e con un Master di II livello in Dietologia e Nutrizione, la mia
+            formazione è continua per offrirti sempre le strategie più aggiornate ed efficaci.
+          </p>
+        </div>
+        <div class="image-content">
+          <div class="image-blob blob-shape-2">
+            <img src="assets/images/libri.png" alt="Libri di nutrizione e cibo sano" />
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="feature-section fade-in-section">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Il mio metodo</h2>
+          <p>
+            Il mio approccio si basa sull'elaborazione di <b>piani nutrizionali personalizzati e sostenibili</b>.
+            Attraverso un percorso di educazione alimentare, ti guido verso scelte consapevoli per un benessere duraturo.
+          </p>
+        </div>
+        <div class="image-content">
+          <div class="image-blob blob-shape-3">
+            <img src="assets/images/metodo.png" alt="Ingredienti freschi su un tavolo da cucina" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Sezione 1: Chi sono (Immagine a destra) -->
-        <section class="feature-section fade-in-section">
-            <div class="content-container">
-                <div class="text-content">
-                    <h2>Chi sono</h2>
-                    <p>Sono la <strong>Dottoressa Maria Pia Raso</strong>, biologa nutrizionista con la passione per un'alimentazione consapevole. Credo che il cibo sia medicina per il corpo e nutrimento per lo spirito.</p>
-                </div>
-                <div class="image-content">
-                    <div class="image-blob blob-shape-1">
-                        <img src="assets/images/pia.jpeg" alt="Dottoressa Raso con il suo cane">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sezione 2: I miei studi (Immagine a sinistra) -->
-        <section class="feature-section fade-in-section">
-            <div class="content-container">
-                <div class="text-content">
-                    <h2>I miei studi</h2>
-                    <p>Laureata in <strong>Scienze dell'Alimentazione</strong> e con un Master di II livello in Dietologia e Nutrizione, la mia formazione è continua per offrirti sempre le strategie più aggiornate ed efficaci.</p>
-                </div>
-                <div class="image-content">
-                    <div class="image-blob blob-shape-2">
-                        <img src="assets/images/libri.png" alt="Avocado, simbolo di cibo sano">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sezione 3: Il mio metodo (Immagine a destra) -->
-        <section class="feature-section fade-in-section">
-            <div class="content-container">
-                <div class="text-content">
-                    <h2>Il mio metodo</h2>
-                    <p>Il mio approccio si basa sull'elaborazione di <strong>piani nutrizionali personalizzati e sostenibili</strong>. Attraverso un percorso di educazione alimentare, ti guido verso scelte consapevoli per un benessere duraturo.</p>
-                </div>
-                <div class="image-content">
-                    <div class="image-blob blob-shape-3">
-                         <img src="assets/images/metodo.png" alt="Uovo, simbolo di proteine">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sezione 4: Dicono di me (Immagine a sinistra) -->
-        <section class="feature-section fade-in-section">
-            <div class="content-container">
-                <div class="text-content">
-                    <h2>Dicono di me</h2>
-                    <p>"Maria Pia mi ha insegnato a mangiare con gioia e senza sensi di colpa. Il suo supporto è stato fondamentale per ritrovare l'equilibrio." - <em>Laura B.</em></p>
-                </div>
-                <div class="image-content">
-                    <div class="image-blob blob-shape-4">
-                        <img src="assets/images/diconodime.png" alt="Piatto colorato e sano">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
+    <section class="feature-section fade-in-section">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Dicono di me</h2>
+          <p>
+            "Maria Pia mi ha insegnato a mangiare con gioia e senza sensi di colpa. Il suo supporto è stato fondamentale per
+            ritrovare l'equilibrio." - <em>Laura B.</em>
+          </p>
+        </div>
+        <div class="image-content">
+          <div class="image-blob blob-shape-4">
+            <img src="assets/images/ciboBuono.png" alt="Piatto colorato e sano" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
-
-<script src="script.js"></script>
