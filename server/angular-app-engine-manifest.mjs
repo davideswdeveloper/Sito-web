@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://davideswdeveloper.github.io/Sito-web',
+  basePath: '/Sito-web',
   supportedLocales: {
   "en-US": ""
 },
