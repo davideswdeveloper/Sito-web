@@ -6,10 +6,9 @@ export default `<!doctype html>
   <base href="/Sito-web/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>:root{--primary-color:#e57373;--accent-color:#81c784;--accent-color-2:var(--accent-color);--accent-color-3:#a5d6a7;--secondary-color:#ffd166;--background-color:#f9f9f9;--surface-color:#f7f7f7;--white:#fff;--black:#000;--text-color:#4A4A4A;--text-secondary:#bdbdbd;--border-color:#444444;--button-text:#fff;--success-color:#28a745;--danger-color:#dc3545;--warning-color:#ffc107;--info-color:#17a2b8;--light-gray:#f5f5f5;--medium-gray:#888;--dark-gray:#222}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;line-height:1.6;background:var(--background-color);color:var(--text-color)}</style><link rel="stylesheet" href="styles-VMUP4ESU.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-VMUP4ESU.css"></noscript></head>
+<style>:root{--primary-color:#4CAF50;--secondary-color:#45a049;--text-color:#333;--light-gray:#f5f5f5;--white:#ffffff}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;line-height:1.6;color:var(--text-color)}</style><link rel="stylesheet" href="styles-IAP7RX2C.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-IAP7RX2C.css"></noscript></head>
 <body ngcm="">
   <app-root></app-root>
-<link rel="modulepreload" href="chunk-6AOLKZEJ.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-HAKQBTH4.js" type="module"></script></body>
+<script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-2EVZRK66.js" type="module"></script></body>
 </html>
 `;
