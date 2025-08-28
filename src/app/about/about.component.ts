@@ -30,7 +30,7 @@ onScroll(): void {
   const rect = wrapper.getBoundingClientRect();
 
   // anticipa l’inizio e ritarda la fine
-  const start = -window.innerHeight *0.2;   // inizia quando è ancora un po’ fuori
+  const start = -window.innerHeight *0.1;   // inizia quando è ancora un po’ fuori
   const end   = rect.height * 0.9;           // termina dopo che è passato oltre
 
   const rawProgress = (-rect.top - start) / (end - start);
