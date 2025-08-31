@@ -1,11 +1,45 @@
 <footer class="site-footer">
-  <div class="container">
-    <div class="brand">© {{ currentYear }} Maria Pia Raso</div>
-    <nav class="footer-nav">
-      <a routerLink="/Sito-web/privacy">Privacy</a>
-      <a routerLink="/Sito-web/cookie-policy">Cookie Policy</a>
-      <a href="#" (click)="$event.preventDefault(); openConsent()">Preferenze cookie</a>
-    </nav>
+  <div class="footer-content">
+    <div class="footer-section">
+      <div class="footer-brand">
+        <h3>Maria Pia Raso</h3>
+        <p>Biologa Nutrizionista</p>
+        <p class="footer-description">Il tuo percorso verso il benessere inizia qui</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Servizi</h4>
+      <ul class="footer-links">
+        <li><a routerLink="/Sito-web/servizi">Consulenze Nutrizionali</a></li>
+        <li><a routerLink="/Sito-web/ricette">Ricette</a></li>
+        <li><a routerLink="/Sito-web/chi-sono">Chi Sono</a></li>
+        <li><a routerLink="/Sito-web/contatti">Contatti</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Contatti</h4>
+      <ul class="footer-links">
+        <li><a routerLink="/Sito-web/contatti">Prenota una visita</a></li>
+        <li><a routerLink="/Sito-web/contatti">Scrivimi</a></li>
+        <li><a href="https://www.miodottore.it/maria-pia-raso/nutrizionista/roma" target="_blank">MioDottore</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Social</h4>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/mariapiaraso" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <p>&copy; {{ currentYear }} Maria Pia Raso - Tutti i diritti riservati</p>
+      <p>Biologa Nutrizionista - Roma, Italia</p>
+    </div>
   </div>
 </footer>
 

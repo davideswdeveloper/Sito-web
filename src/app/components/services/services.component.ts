@@ -27,64 +27,29 @@ export class ServicesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // 🔹 Servizi
   services = [
-    // Servizi principali
     {
-      title: 'Educazione alimentare',
-      description: 'Incontri per imparare a scegliere e gestire gli alimenti in modo consapevole e autonomo.'
+      title: 'Dieta Mediterranea',
+      description: 'Modello alimentare basato su alimenti freschi, stagionali e naturali, per promuovere benessere, longevità e prevenzione delle malattie croniche.'
     },
     {
-      title: 'Dieta per disturbi metabolici',
-      description: 'Piani nutrizionali specifici per gestire e prevenire problemi metabolici.'
+      title: 'Piano Nutrizionale Personalizzato per Allattamento',
+      description: 'Piani nutrizionali per favorire il recupero post-parto, garantire energia e nutrienti.'
     },
     {
-      title: 'Dieta per disturbi gastrointestinali',
-      description: 'Indicazioni alimentari per ridurre i sintomi e migliorare la salute intestinale.'
+      title: 'Piano Nutrizionale Personalizzato per Sportivi',
+      description: 'Strategie alimentari per migliorare performance, recupero e benessere.'
     },
     {
-      title: 'Dieta in gravidanza',
-      description: 'Consigli e piani alimentari per il benessere di mamma e bambino durante la gravidanza.'
-    },
-    {
-      title: 'Dieta chetogenica',
-      description: 'Percorsi chetogenici personalizzati e monitorati da un professionista per raggiungere i tuoi obiettivi.'
-    },
-    {
-      title: 'Dieta vegetariana',
-      description: 'Percorsi nutrizionali equilibrati per chi segue una dieta vegetariana, senza rinunciare al gusto.'
-    },
-    {
-      title: 'Dieta vegana',
-      description: 'Piani alimentari completi per chi segue uno stile di vita vegano, garantendo nutrienti essenziali.'
-    },
-    {
-      title: 'Dieta per intolleranze',
-      description: 'Piani personalizzati per gestire intolleranze alimentari mantenendo gusto e varietà.'
-    },
-  
-    // Servizi aggiuntivi
-    {
-      title: 'Dieta per disbiosi',
+      title: 'Piano Nutrizionale Personalizzato per Disbiosi',
       description: 'Strategie alimentari per il riequilibrio della flora intestinale e il benessere digestivo.'
     },
     {
-      title: 'Analisi dello stato nutrizionale',
-      description: 'Valutazione approfondita dello stato nutrizionale generale per individuare eventuali carenze.'
+      title: 'Piano Nutrizionale Personalizzato per Celiaci',
+      description: 'Piani alimentari per garantire il corretto apporto nutrizionale, prevenire carenze e migliorare la qualità della vita.'
     },
     {
-      title: 'Analisi della composizione corporea',
-      description: 'Esame della distribuzione di massa magra e grassa per un monitoraggio preciso.'
-    },
-    {
-      title: 'Analisi bioimpedenziometrica',
-      description: 'Misurazione precisa della composizione corporea tramite bioimpedenziometria.'
-    },
-    {
-      title: 'Prima visita nutrizionistica',
-      description: 'Incontro conoscitivo per impostare un percorso nutrizionale su misura.'
-    },
-    {
-      title: 'Visita nutrizionale di controllo',
-      description: 'Appuntamenti di follow-up per valutare i risultati e adattare il piano alimentare.'
+      title: 'Analisi della Composizione Corporea',
+      description: 'Misurazione dei diversi compartimenti corporei attraverso l’utilizzo del bioimpedenziometro Akern (BIA 101 BIVA PRO).'
     }
   ];
   
