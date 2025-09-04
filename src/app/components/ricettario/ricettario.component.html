@@ -142,13 +142,25 @@
                       </li>
                   </ol>
       
-                  <div class="video_box" *ngIf="selectedRecipe!.video_url">
+                  <!-- <div class="video_box" *ngIf="selectedRecipe!.video_url">
                       <div class="video_box__wrap">
                           <video [src]="selectedRecipe!.video_url" muted autoplay loop [poster]="selectedRecipe!.main_image || 'assets/images/default-selectedRecipe.jpg'">
                               Video about {{ selectedRecipe!.title }}
                           </video>
                       </div>
+                  </div> -->
+                  <div class="video_box" *ngIf="selectedRecipe!.video_url">
+                    <div class="video_box__wrap">
+                      <youtube-player
+                      
+                        [videoId]="extractVideoId(selectedRecipe!.video_url)"
+                        [height]="750"
+                      [width]="560"
+                      [playerVars]="{ autoplay: 1, mute: 1 }">
+                      </youtube-player>
+                    </div>
                   </div>
+                  
               </div>
           </main>
       </div>

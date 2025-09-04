@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, HostListener, AfterViewInit, ElementRef } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import test from 'node:test';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  imports: [CommonModule, FormsModule],   // 👈 aggiungi qui
+
+  styleUrls: ['./about.component.css'],
 })
+
+
+
 export class AboutComponent implements AfterViewInit {
   private pathLength = 3000; // deve corrispondere a stroke-dasharray
 

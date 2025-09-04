@@ -14,6 +14,39 @@
 }
 
 
+/* Contact CTA */
+.contact-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .contact-cta h3 {
+    font-size: 2.2rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .contact-cta p {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+
+
 h2 {
     font-size: 2.8rem;
     color: #e57373;
@@ -183,3 +216,4 @@ h2 {
 .feature-section p {
   color: var(--brand-text) !important;
 }
+

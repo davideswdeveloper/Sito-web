@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: 'chi-sono', component: AboutComponent },
     { path: 'contatti', component: ContattiComponent },
     { path: 'db', component: DbComponent },
-    { path: 'privacy', component: PrivacyPolicyComponent },
+    { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: 'cookie-policy', component: CookiePolicyComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 

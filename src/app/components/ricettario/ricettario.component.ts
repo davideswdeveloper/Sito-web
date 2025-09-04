@@ -3,9 +3,11 @@ import { Recipe } from '../../recipe.model';
 import { RecipseService } from '../../recipse.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 @Component({
   selector: 'app-ricettario',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,YouTubePlayerModule],
   templateUrl: './ricettario.component.html',
   styleUrl: './ricettario.component.css'
 })
@@ -16,6 +18,17 @@ export class RicettarioComponent implements OnInit{
     ){
 
   }
+  extractVideoId(url: string): string | undefined {
+    let match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})(?:[?&]|$)/);
+    
+    if (!match) {
+      // caso specifico per i link shorts
+      match = url.match(/shorts\/([0-9A-Za-z_-]{11})/);
+    }
+  
+    return match ? match[1] : undefined;
+  }
+  
 
   recipes: Recipe[] = [];
   selectedRecipe: Recipe | null = null;

@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
-import { isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { isPlatformBrowser, DOCUMENT, CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { HeroComponent } from '../components/hero/hero.component';
@@ -7,16 +7,18 @@ import { ReceiptsComponent } from '../components/receipts/receipts.component';
 import { ServicesComponent } from '../components/services/services.component';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { FormsModule } from '@angular/forms';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ ReceiptsComponent, ],
+  imports: [ ReceiptsComponent, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements AfterViewInit {
   @ViewChild(ReceiptsComponent) receiptsComponent!: ReceiptsComponent;
 
@@ -107,6 +109,46 @@ export class DashboardComponent implements AfterViewInit {
     // Inizializza l'animazione
     updatePlateAnimation(1);
   }
+
+
+  
+formData = {
+  name: '',
+  email: '',
+  message: ''
+};
+
+scriviWhatsApp() {
+  // Seleziona la checkbox dal DOM
+  const privacyCheckbox = document.querySelector<HTMLInputElement>('input[name="privacy"]');
+
+  if (!privacyCheckbox?.checked) {
+    alert('Devi accettare la Privacy Policy per scrivere su WhatsApp!');
+    return; // blocca la funzione
+  }
+
+  // Leggi anche gli altri valori
+  const nameInput = document.querySelector<HTMLInputElement>('input[name="name"]');
+  const emailInput = document.querySelector<HTMLInputElement>('input[name="email"]');
+  const messageInput = document.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+
+  const nome = nameInput?.value || 'Anonimo';
+  const email = emailInput?.value ? ` Email: ${emailInput.value}.` : '';
+  const messaggio = messageInput?.value || '';
+
+  const testo = `Ciao, sono ${nome}. Ti contatto per: ${messaggio}.${email}`;
+  const phone = '393295840904';
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(testo)}`, '_blank');
+}
+
+
+  
+
+onSubmit(event: Event) {
+  event.preventDefault(); // evita il reload della pagina
+  console.log('Dati salvati:', this.formData);
+  localStorage.setItem('contatto', JSON.stringify(this.formData));
+}
 
   private initMetodoScrollyAnimation(): void {
     const metodoSteps = this.document.querySelectorAll('.metodo-step');

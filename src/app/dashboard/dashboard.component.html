@@ -19,8 +19,8 @@
     <div class="about-grid reveal-on-scroll" data-delay="0.1">
       <div class="about-text">
         <h2 class="section__title">Chi Sono</h2>
-        <p class="about-paragraph">Sono <strong>Maria Pia Raso</strong>, Biologa Nutrizionista. La mia missione è aiutarti a riscoprire il piacere di un'alimentazione sana e bilanciata, senza rinunce.</p>
-        <p class="about-paragraph">Credo in un approccio scientifico ma empatico, cucito su misura per le tue esigenze e il tuo stile di vita.</p>
+        <p class="about-paragraph">Sono la Dottoressa <strong>Maria Pia Raso</strong>, Biologa Nutrizionista. La mia missione è guidarti a riscoprire il piacere di un'alimentazione sana e bilanciata, in armonia con le tue esigenze ed il tuo stile di vita. 
+          Credo in un approccio scientifico ma empatico, per offrirti un piano nutrizionale personalizzato e sostenibile.</p>
         <a href="/Sito-web/chi-sono" class="about-link">Scopri di più su di me →</a>
       </div>
       <div class="about-image">
@@ -151,7 +151,7 @@
         </div>
         <div class="metodo-step" data-step="2">
           <div class="metodo-icon">📚</div>
-          <h3>Educazione Continua</h3>
+          <h3>Educazione alimentare</h3>
           <p>Ti guido nell'apprendimento di scelte alimentari consapevoli, per mantenere i risultati nel tempo e migliorare la tua relazione con il cibo.</p>
         </div>
         <div class="metodo-step" data-step="3">
@@ -184,7 +184,7 @@
       </div>
       
       <div class="metodo-step-text" data-step="2">
-        <h2>Educazione Continua</h2>
+        <h2>Educazione alimentare</h2>
         <p>Mangiare bene non significa solo seguire uno schema alimentare, ma imparare a conoscere il cibo, ascoltare il proprio corpo e fare scelte consapevoli ogni giorno.
           L'educazione alimentare è uno degli aspetti più importanti del mio lavoro: non mi limito a dare indicazioni su “cosa mangiare”, ma ho l’obiettivo di aiutarti a sviluppare una maggiore autonomia nelle scelte quotidiane. Imparerai a leggere le etichette, a bilanciare i nutrienti e a creare pasti sani e gustosi.</p>
         </div>
@@ -283,7 +283,28 @@
         <a href="mailto:info@example.com" class="btn-secondary">Contattami</a>
       </div>
     </div> -->
+
+    
+    
   </div>
 </section>
+
+<form action="https://formsubmit.co/nutrizionista.rasomariapia@gmail.com" method="POST" target="_blank" #contactForm>
+  <input type="text" name="name" placeholder="Nome" required #nameInput>
+  <input type="email" name="email" placeholder="Email" required #emailInput>
+  <textarea name="message" placeholder="Messaggio" required #messageInput></textarea>
+  
+  <!-- Hidden inputs necessari per FormSubmit -->
+  <input type="hidden" name="_subject" value="Nuovo messaggio dal sito">
+  <input type="hidden" name="_autoresponse" value="Grazie per averci contattato! Ti risponderemo presto.">
+
+  <label>
+    <input type="checkbox" name="privacy" required #privacyCheckbox>
+    Ho letto e accetto la <a href="/Sito-web/privacy-policy" target="_blank">Privacy Policy</a>
+  </label>
+
+  <button class="primary" type="submit">Invia</button>
+  <button class="secondary" type="button" (click)="scriviWhatsApp()">Scrivimi su WhatsApp</button>
+</form>
 
 

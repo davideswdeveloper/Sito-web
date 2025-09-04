@@ -14,22 +14,23 @@
     </div>
     
     <div class="locations-grid">
-      <div class="location-item">
-        <div class="location-icon">🏥</div>
-        <h3>Studio EM Nutrizione&Salute</h3>
-        <p>Viale Tito Labieno, 15</p>
-        <p class="location-description">Studio principale nel cuore di Roma, facilmente raggiungibile con i mezzi pubblici.</p>
-        <button class="btn-primary" (click)="portamiQui('Viale Tito Labieno, 15, Roma')">
-          Portami qui
-        </button>
-      </div>
       
       <div class="location-item">
         <div class="location-icon">🏢</div>
         <h3>Studio Roma Centro</h3>
         <p>Via Po, 31</p>
-        <p class="location-description">Studio nella zona centrale di Roma, perfetto per chi lavora o vive in città.</p>
+        <p class="location-description">Studio nel cuore di Quartiere Pinciano, perfetto per chi lavora o vive in città.</p>
         <button class="btn-primary" (click)="portamiQui('Via Po, 31, Roma')">
+          Portami qui
+        </button>
+      </div>
+
+      <div class="location-item">
+        <div class="location-icon">🏥</div>
+        <h3>Studio EM Nutrizione&Salute</h3>
+        <p>Viale Tito Labieno, 15</p>
+        <p class="location-description">Studio nella zona di Cinecittà, facilmente raggiungibile con i mezzi pubblici.</p>
+        <button class="btn-primary" (click)="portamiQui('Viale Tito Labieno, 15, Roma')">
           Portami qui
         </button>
       </div>
@@ -38,7 +39,7 @@
         <div class="location-icon">🏘️</div>
         <h3>Studio Taurianova</h3>
         <p>Via Ventre, 15</p>
-        <p class="location-description">Studio a Taurianova, ideale per i pazienti della zona calabrese.</p>
+        <p class="location-description">Studio a Taurianova, punto di riferimento per i pazienti della zona calabrese.</p>
         <button class="btn-primary" (click)="portamiQui('Via Ventre, 15, Taurianova')">
           Portami qui
         </button>
@@ -93,3 +94,24 @@
           <p class="instagram-description">Ricette, consigli nutrizionali e aggiornamenti quotidiani</p>
         </div>
       </div>
+    </div>
+
+    <form action="https://formsubmit.co/nutrizionista.rasomariapia@gmail.com" method="POST" target="_blank">
+      <input type="text" name="name" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Messaggio" required></textarea>
+    
+      <!-- Checkbox privacy -->
+      <label>
+        <input type="checkbox" name="privacy" required>
+        Ho letto e accetto la <a href="/Sito-web/privacy-policy" target="_blank">Privacy Policy</a>
+      </label>
+    
+      <!-- Hidden inputs necessari per FormSubmit -->
+      <input type="hidden" name="_subject" value="Nuovo messaggio dal sito">
+      <input type="hidden" name="_autoresponse" value="Grazie per averci contattato! Ti risponderemo presto.">
+    
+      <!-- Submit -->
+      <button class="primary" type="submit">Invia</button>
+    </form>
+    
