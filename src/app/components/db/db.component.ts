@@ -47,6 +47,126 @@ export class DbComponent {
     this.loadRecipes();
   }
 
+  // Input in blocco
+  bulkIngredients: string = '';
+  bulkSteps: string = '';
+
+  // Video: toggle URL / upload
+  useVideoUpload: boolean = false;
+  videoFile: File | null = null;
+  // Image: toggle URL / upload
+  useImageUpload: boolean = false;
+  imageFile: File | null = null;
+
+  onVideoToggleChange() {
+    if (!this.useVideoUpload) {
+      this.videoFile = null;
+    }
+  }
+
+  onVideoFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.videoFile = input.files[0];
+    }
+  }
+
+  onImageFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.imageFile = input.files[0];
+    }
+  }
+
+  // Parser per ingredienti incollati (ignora numerazioni tipo "1.")
+  private parseBulkIngredients(text: string): Ingredient[] {
+    return text
+      .split(/\r?\n/)
+      .map(l => l.trim())
+      .filter(Boolean)
+      .map(line => line.replace(/^\d+[\).\-\s]+/, ''))
+      .map(line => {
+        // prova split su trattino o virgola per separare quantità, altrimenti tutto come nome
+        const commaIdx = line.indexOf(',');
+        if (commaIdx > -1) {
+          return { name: line.slice(0, commaIdx).trim(), quantity: line.slice(commaIdx + 1).trim() } as Ingredient;
+        }
+        return { name: line, quantity: '' } as Ingredient;
+      });
+  }
+
+  // Parser per passi incollati (numerati 1., 2), ...)
+  private parseBulkSteps(text: string): Step[] {
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    const steps: Step[] = [];
+    for (const line of lines) {
+      const cleaned = line.replace(/^\d+[\).\-\s]+/, '');
+      const capitalized = this.capitalizeFirst(cleaned);
+      const index = steps.length + 1;
+      steps.push({ step: String(index), title: `Passo ${index}`, description: capitalized });
+    }
+    return steps;
+  }
+
+  private capitalizeFirst(text: string): string {
+    if (!text) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  applyBulkIngredients() {
+    const parsed = this.parseBulkIngredients(this.bulkIngredients);
+    this.newRecipe.ingredients = [...this.newRecipe.ingredients, ...parsed];
+    this.bulkIngredients = '';
+  }
+
+  applyBulkSteps() {
+    const parsed = this.parseBulkSteps(this.bulkSteps);
+    this.newRecipe.steps = [...this.newRecipe.steps, ...parsed].map((s, i) => ({ ...s, step: String(i + 1) }));
+    this.bulkSteps = '';
+  }
+
+  // ===================== EDIT FORM (bulk + video) =====================
+  editBulkIngredients: string = '';
+  editBulkSteps: string = '';
+  editUseVideoUpload: boolean = false;
+  editVideoFile: File | null = null;
+  editUseImageUpload: boolean = false;
+  editImageFile: File | null = null;
+
+  editOnVideoToggleChange() {
+    if (!this.editUseVideoUpload) {
+      this.editVideoFile = null;
+    }
+  }
+
+  editOnVideoFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.editVideoFile = input.files[0];
+    }
+  }
+
+  editOnImageFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.editImageFile = input.files[0];
+    }
+  }
+
+  applyEditBulkIngredients() {
+    if (!this.editingRecipe) return;
+    const parsed = this.parseBulkIngredients(this.editBulkIngredients);
+    this.editingRecipe.ingredients = [...this.editingRecipe.ingredients, ...parsed];
+    this.editBulkIngredients = '';
+  }
+
+  applyEditBulkSteps() {
+    if (!this.editingRecipe) return;
+    const parsed = this.parseBulkSteps(this.editBulkSteps);
+    this.editingRecipe.steps = [...this.editingRecipe.steps, ...parsed].map((s, i) => ({ ...s, step: String(i + 1) }));
+    this.editBulkSteps = '';
+  }
+
   loadRecipes() {
     this.isLoading = true;
     this.errorMessage = '';
@@ -68,18 +188,31 @@ export class DbComponent {
     if (confirm('Sei sicuro di voler eliminare questa ricetta?')) {
       this.isLoading = true;
       this.errorMessage = '';
-      
-      this.recipesService.deleteRecipe(id).subscribe({
-        next: () => {
-          this.loadRecipes();
-          this.successMessage = 'Ricetta eliminata con successo!';
-          setTimeout(() => this.successMessage = '', 3000);
-        },
-        error: (err) => {
-          console.error('Errore cancellazione', err);
-          this.errorMessage = 'Errore nell\'eliminazione della ricetta: ' + err.message;
-          this.isLoading = false;
-        },
+      // Find recipe to delete to know its media
+      const recipeToDelete = this.recipes.find(r => r.id === id) || null;
+      const mediaTasks: Promise<void>[] = [];
+      if (recipeToDelete) {
+        if (recipeToDelete.main_image) {
+          mediaTasks.push(this.recipesService.deleteAsset(recipeToDelete.main_image));
+        }
+        if (recipeToDelete.video_url) {
+          mediaTasks.push(this.recipesService.deleteAsset(recipeToDelete.video_url));
+        }
+      }
+
+      Promise.allSettled(mediaTasks).finally(() => {
+        this.recipesService.deleteRecipe(id).subscribe({
+          next: () => {
+            this.loadRecipes();
+            this.successMessage = 'Ricetta eliminata con successo!';
+            setTimeout(() => this.successMessage = '', 3000);
+          },
+          error: (err) => {
+            console.error('Errore cancellazione', err);
+            this.errorMessage = 'Errore nell\'eliminazione della ricetta: ' + err.message;
+            this.isLoading = false;
+          },
+        });
       });
     }
   }
@@ -87,21 +220,41 @@ export class DbComponent {
   updateRecipe(recipe: Recipe) {
     this.isLoading = true;
     this.errorMessage = '';
-    
-    this.recipesService.updateRecipe(recipe.id, recipe).subscribe({
-      next: (updated) => {
-        console.log('Aggiornato:', updated);
-        this.loadRecipes();
-        this.cancelEdit();
-        this.successMessage = 'Ricetta aggiornata con successo!';
-        setTimeout(() => this.successMessage = '', 3000);
-      },
-      error: (err) => {
-        console.error('Errore aggiornamento', err);
-        this.errorMessage = 'Errore nell\'aggiornamento della ricetta: ' + err.message;
+
+    const proceed = () => {
+      this.recipesService.updateRecipe(recipe.id, recipe).subscribe({
+        next: (updated) => {
+          console.log('Aggiornato:', updated);
+          this.loadRecipes();
+          this.cancelEdit();
+          this.successMessage = 'Ricetta aggiornata con successo!';
+          setTimeout(() => this.successMessage = '', 3000);
+        },
+        error: (err) => {
+          console.error('Errore aggiornamento', err);
+          this.errorMessage = 'Errore nell\'aggiornamento della ricetta: ' + err.message;
+          this.isLoading = false;
+        },
+      });
+    };
+
+    (async () => {
+      try {
+        if (this.editUseImageUpload && this.editImageFile) {
+          const url = await this.recipesService.uploadImage(this.editImageFile);
+          recipe.main_image = url;
+        }
+        if (this.editUseVideoUpload && this.editVideoFile) {
+          const url = await this.recipesService.uploadVideo(this.editVideoFile);
+          recipe.video_url = url;
+        }
+        proceed();
+      } catch (err) {
+        console.error('Upload file fallito (edit)', err);
+        this.errorMessage = 'Upload file fallito.';
         this.isLoading = false;
-      },
-    });
+      }
+    })();
   }
 
   // Metodi per gestire l'editing
@@ -132,21 +285,41 @@ export class DbComponent {
   createRecipe() {
     this.isLoading = true;
     this.errorMessage = '';
-    
-    this.recipesService.createRecipe(this.newRecipe).subscribe({
-      next: (created) => {
-        console.log('Creata:', created);
-        this.loadRecipes();
-        this.cancelEdit();
-        this.successMessage = 'Ricetta creata con successo!';
-        setTimeout(() => this.successMessage = '', 3000);
-      },
-      error: (err) => {
-        console.error('Errore creazione', err);
-        this.errorMessage = 'Errore nella creazione della ricetta: ' + err.message;
+
+    const proceed = () => {
+      this.recipesService.createRecipe(this.newRecipe).subscribe({
+        next: (created) => {
+          console.log('Creata:', created);
+          this.loadRecipes();
+          this.cancelEdit();
+          this.successMessage = 'Ricetta creata con successo!';
+          setTimeout(() => this.successMessage = '', 3000);
+        },
+        error: (err) => {
+          console.error('Errore creazione', err);
+          this.errorMessage = 'Errore nella creazione della ricetta: ' + err.message;
+          this.isLoading = false;
+        },
+      });
+    };
+
+    (async () => {
+      try {
+        if (this.useImageUpload && this.imageFile) {
+          const img = await this.recipesService.uploadImage(this.imageFile);
+          this.newRecipe.main_image = img;
+        }
+        if (this.useVideoUpload && this.videoFile) {
+          const vid = await this.recipesService.uploadVideo(this.videoFile);
+          this.newRecipe.video_url = vid;
+        }
+        proceed();
+      } catch (err) {
+        console.error('Upload file fallito', err);
+        this.errorMessage = 'Upload file fallito.';
         this.isLoading = false;
-      },
-    });
+      }
+    })();
   }
 
   // Metodi per gestire ingredienti e step
@@ -174,15 +347,21 @@ export class DbComponent {
 
   addStep() {
     if (this.isEditing && this.editingRecipe) {
-      if (this.editStep.title && this.editStep.description) {
-        this.editStep.step = (this.editingRecipe.steps.length + 1).toString();
-        this.editingRecipe.steps.push({ ...this.editStep });
+      if (this.editStep.description) {
+        const index = this.editingRecipe.steps.length + 1;
+        const title = this.editStep.title && this.editStep.title.trim().length > 0 ? this.editStep.title : `Passo ${index}`;
+        const description = this.capitalizeFirst(this.editStep.description);
+        const step: Step = { step: String(index), title, description };
+        this.editingRecipe.steps.push(step);
         this.editStep = { step: '', title: '', description: '' };
       }
     } else {
-      if (this.newStep.title && this.newStep.description) {
-        this.newStep.step = (this.newRecipe.steps.length + 1).toString();
-        this.newRecipe.steps.push({ ...this.newStep });
+      if (this.newStep.description) {
+        const index = this.newRecipe.steps.length + 1;
+        const title = this.newStep.title && this.newStep.title.trim().length > 0 ? this.newStep.title : `Passo ${index}`;
+        const description = this.capitalizeFirst(this.newStep.description);
+        const step: Step = { step: String(index), title, description };
+        this.newRecipe.steps.push(step);
         this.newStep = { step: '', title: '', description: '' };
       }
     }

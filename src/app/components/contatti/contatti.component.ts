@@ -24,12 +24,16 @@ export class ContattiComponent {
   
   scriviWhatsApp() {
     const phone = '393295840904';
-    const nome = this.formData.name || 'Anonimo';
+    const nome = this.formData.name;
     const email = this.formData.email ? ` Email: ${this.formData.email}.` : '';
     const messaggio = this.formData.message || '';
-    
-    const testo = `Ciao, sono ${nome}. Ti contatto per: ${messaggio}.${email}`;
+    if(this.formData.name){
+      const testo = `Ciao, sono ${nome}. Ti contatto per: ${messaggio}.${email}`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(testo)}`, '_blank');
+    }else{
+    const testo = `Ciao! Ti contatto per: ${messaggio}.${email}`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(testo)}`, '_blank');
+  }
   }
   
   

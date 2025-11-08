@@ -29,11 +29,11 @@ export class ServicesComponent implements OnInit, AfterViewInit, OnDestroy {
   services = [
     {
       title: 'Dieta Mediterranea',
-      description: 'Modello alimentare basato su alimenti freschi, stagionali e naturali, per promuovere benessere, longevità e prevenzione delle malattie croniche.'
+      description: 'Modello alimentare basato su alimenti freschi, stagionali e naturali, per promuovere benessere, longevità e prevenire malattie croniche.'
     },
     {
       title: 'Piano Nutrizionale Personalizzato per Allattamento',
-      description: 'Piani nutrizionali per favorire il recupero post-parto, garantire energia e nutrienti.'
+      description: 'Piani nutrizionali per favorire il benessere nel periodo post-parto, garantire energia e nutrienti.'
     },
     {
       title: 'Piano Nutrizionale Personalizzato per Sportivi',

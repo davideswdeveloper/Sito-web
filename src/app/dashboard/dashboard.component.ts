@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { isPlatformBrowser, DOCUMENT, CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { HeroComponent } from '../components/hero/hero.component';
 import { ReceiptsComponent } from '../components/receipts/receipts.component';
@@ -8,6 +8,7 @@ import { ServicesComponent } from '../components/services/services.component';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FormsModule } from '@angular/forms';
+import { filter, take } from 'rxjs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +25,8 @@ export class DashboardComponent implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router
   ) {}
 
   ngAfterViewInit(): void {
@@ -228,5 +230,32 @@ onSubmit(event: Event) {
     if (hero) {
       (hero as HTMLElement).classList.add('is-visible');
     }
+  }
+
+  scrollToSection(sectionId: string): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    
+    const element = this.document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  scrollToSectionPage(sectionId: string, targetPage: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    // Naviga alla pagina desiderata
+    this.router.navigate([targetPage]).then(() => {
+      console.log('navigazione completata');
+      setTimeout(() => {
+        const element = this.document.getElementById(sectionId);
+        console.log(element);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100); // leggero delay per assicurarsi che il DOM sia pronto
+    });
   }
 }

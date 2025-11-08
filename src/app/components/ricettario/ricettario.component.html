@@ -6,13 +6,13 @@
       <span class="highlight">ricetta</span> preferita ti aspetta.
     </h1>
     <p>
-      Lasciati ispirare dalle mie ricette: scopri nuovi sapori e impara a mangiare bene, senza privazioni.
+      Lasciati ispirare dalle mie ricette: scopri nuovi sapori e impara a mangiare con gusto, senza privazioni.
     </p>
     <button class="cta">Scopri le ricette</button>
   </div>
 
   <div class="hero-image">
-    <img src="assets/parigi.jpg" alt="Hero Image">
+    <img src="assets/images/piattoPienoG2.png" alt="Hero Image">
   </div>
 
   
@@ -142,22 +142,29 @@
                       </li>
                   </ol>
       
-                  <!-- <div class="video_box" *ngIf="selectedRecipe!.video_url">
-                      <div class="video_box__wrap">
-                          <video [src]="selectedRecipe!.video_url" muted autoplay loop [poster]="selectedRecipe!.main_image || 'assets/images/default-selectedRecipe.jpg'">
-                              Video about {{ selectedRecipe!.title }}
-                          </video>
-                      </div>
-                  </div> -->
                   <div class="video_box" *ngIf="selectedRecipe!.video_url">
-                    <div class="video_box__wrap">
-                      <youtube-player
-                      
-                        [videoId]="extractVideoId(selectedRecipe!.video_url)"
-                        [height]="750"
-                      [width]="560"
-                      [playerVars]="{ autoplay: 1, mute: 1 }">
-                      </youtube-player>
+                    <div class="video_box__wrap" #videoContainer>
+                      <ng-container *ngIf="extractVideoId(selectedRecipe!.video_url); else html5Video">
+                        <youtube-player
+                          #ytPlayer
+                          (ready)="onYouTubeReady()"
+                          [videoId]="extractVideoId(selectedRecipe!.video_url)!"
+                          [height]="750"
+                          [width]="560"
+                          [playerVars]="{ autoplay: 0, mute: 1, controls: 1 }">
+                        </youtube-player>
+                      </ng-container>
+                      <ng-template #html5Video>
+                        <video #htmlVideo
+                               [src]="selectedRecipe!.video_url"
+                               controls
+                               playsinline
+                               preload="metadata"
+                               [poster]="selectedRecipe!.main_image || 'assets/images/default-selectedRecipe.jpg'"
+                               style="width:100%; height:100%; object-fit: cover;">
+                          Il tuo browser non supporta il video HTML5.
+                        </video>
+                      </ng-template>
                     </div>
                   </div>
                   

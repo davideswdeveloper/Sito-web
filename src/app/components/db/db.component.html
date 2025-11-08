@@ -53,18 +53,41 @@
       </div>
 
       <div class="form-group">
-        <label for="main_image">URL Immagine principale</label>
-        <input type="url" id="main_image" name="main_image" [(ngModel)]="newRecipe.main_image" class="form-control">
+        <label>Immagine principale</label>
+        <div class="toggle-row">
+          <label><input type="radio" name="imageInputMode" [checked]="!useImageUpload" (change)="useImageUpload=false"> URL</label>
+          <label><input type="radio" name="imageInputMode" [checked]="useImageUpload" (change)="useImageUpload=true"> Carica file</label>
+        </div>
+        <div *ngIf="!useImageUpload">
+          <input type="url" id="main_image" name="main_image" [(ngModel)]="newRecipe.main_image" class="form-control" placeholder="https://...">
+        </div>
+        <div *ngIf="useImageUpload">
+          <input type="file" accept="image/*" (change)="onImageFileSelected($event)" class="form-control">
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="video_url">URL Video</label>
-        <input type="url" id="video_url" name="video_url" [(ngModel)]="newRecipe.video_url" class="form-control">
+        <label>Video</label>
+        <div class="toggle-row">
+          <label><input type="radio" name="videoInputMode" [checked]="!useVideoUpload" (change)="useVideoUpload=false; onVideoToggleChange()"> URL</label>
+          <label><input type="radio" name="videoInputMode" [checked]="useVideoUpload" (change)="useVideoUpload=true; onVideoToggleChange()"> Carica file</label>
+        </div>
+        <div *ngIf="!useVideoUpload">
+          <input type="url" id="video_url" name="video_url" [(ngModel)]="newRecipe.video_url" class="form-control" placeholder="https://...">
+        </div>
+        <div *ngIf="useVideoUpload">
+          <input type="file" accept="video/*" (change)="onVideoFileSelected($event)" class="form-control">
+        </div>
       </div>
 
       <!-- Gestione Ingredienti -->
       <div class="ingredients-section">
         <h3>Ingredienti</h3>
+        <div class="bulk-box">
+          <label>Incolla elenco ingredienti (uno per riga). Le numerazioni iniziali saranno ignorate.</label>
+          <textarea [(ngModel)]="bulkIngredients" name="bulkIngredients" class="form-control" placeholder="es.\n450 grammi di zucca\n30 grammi di parmigiano\n..."></textarea>
+          <button type="button" class="btn btn-secondary" (click)="applyBulkIngredients()">Aggiungi</button>
+        </div>
         <div class="ingredients-list">
           <div class="ingredient-item" *ngFor="let ingredient of newRecipe.ingredients; let i = index">
             <span class="ingredient-name">{{ ingredient.name }}</span>
@@ -87,6 +110,11 @@
       <!-- Gestione Step -->
       <div class="steps-section">
         <h3>Passi</h3>
+        <div class="bulk-box">
+          <label>Incolla i passi numerati (1., 2), 3 - ...)</label>
+          <textarea [(ngModel)]="bulkSteps" name="bulkSteps" class="form-control" placeholder="Procedimento:\n1. ...\n2. ...\n..."></textarea>
+          <button type="button" class="btn btn-secondary" (click)="applyBulkSteps()">Aggiungi Passi</button>
+        </div>
         <div class="steps-list">
           <div class="step-item" *ngFor="let step of newRecipe.steps; let i = index">
             <div class="step-header">
@@ -147,18 +175,41 @@
       </div>
 
       <div class="form-group">
-        <label for="edit-main_image">URL Immagine principale</label>
-        <input type="url" id="edit-main_image" name="main_image" [(ngModel)]="editingRecipe.main_image" class="form-control">
+        <label>Immagine principale</label>
+        <div class="toggle-row">
+          <label><input type="radio" name="editImageInputMode" [checked]="!editUseImageUpload" (change)="editUseImageUpload=false"> URL</label>
+          <label><input type="radio" name="editImageInputMode" [checked]="editUseImageUpload" (change)="editUseImageUpload=true"> Carica file</label>
+        </div>
+        <div *ngIf="!editUseImageUpload">
+          <input type="url" id="edit-main_image" name="main_image" [(ngModel)]="editingRecipe.main_image" class="form-control" placeholder="https://...">
+        </div>
+        <div *ngIf="editUseImageUpload">
+          <input type="file" accept="image/*" (change)="editOnImageFileSelected($event)" class="form-control">
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="edit-video_url">URL Video</label>
-        <input type="url" id="edit-video_url" name="video_url" [(ngModel)]="editingRecipe.video_url" class="form-control">
+        <label>Video</label>
+        <div class="toggle-row">
+          <label><input type="radio" name="editVideoInputMode" [checked]="!editUseVideoUpload" (change)="editUseVideoUpload=false; editOnVideoToggleChange()"> URL</label>
+          <label><input type="radio" name="editVideoInputMode" [checked]="editUseVideoUpload" (change)="editUseVideoUpload=true; editOnVideoToggleChange()"> Carica file</label>
+        </div>
+        <div *ngIf="!editUseVideoUpload">
+          <input type="url" id="edit-video_url" name="video_url" [(ngModel)]="editingRecipe.video_url" class="form-control" placeholder="https://...">
+        </div>
+        <div *ngIf="editUseVideoUpload">
+          <input type="file" accept="video/*" (change)="editOnVideoFileSelected($event)" class="form-control">
+        </div>
       </div>
 
       <!-- Gestione Ingredienti -->
       <div class="ingredients-section">
         <h3>Ingredienti</h3>
+        <div class="bulk-box">
+          <label>Incolla elenco ingredienti (uno per riga). Le numerazioni iniziali saranno ignorate.</label>
+          <textarea [(ngModel)]="editBulkIngredients" name="editBulkIngredients" class="form-control" placeholder="es.\n450 grammi di zucca\n30 grammi di parmigiano\n..."></textarea>
+          <button type="button" class="btn btn-secondary" (click)="applyEditBulkIngredients()">Aggiungi</button>
+        </div>
         <div class="ingredients-list">
           <div class="ingredient-item" *ngFor="let ingredient of editingRecipe.ingredients; let i = index">
             <span class="ingredient-name">{{ ingredient.name }}</span>
@@ -181,6 +232,11 @@
       <!-- Gestione Step -->
       <div class="steps-section">
         <h3>Passi</h3>
+        <div class="bulk-box">
+          <label>Incolla i passi numerati (1., 2), 3 - ...)</label>
+          <textarea [(ngModel)]="editBulkSteps" name="editBulkSteps" class="form-control" placeholder="Procedimento:\n1. ...\n2. ...\n..."></textarea>
+          <button type="button" class="btn btn-secondary" (click)="applyEditBulkSteps()">Aggiungi Passi</button>
+        </div>
         <div class="steps-list">
           <div class="step-item" *ngFor="let step of editingRecipe.steps; let i = index">
             <div class="step-header">

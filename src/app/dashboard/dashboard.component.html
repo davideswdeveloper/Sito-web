@@ -5,8 +5,10 @@
     <p class="home-hero__subtitle">Biologa Nutrizionista</p>
     <p class="home-hero__tagline">Il tuo percorso verso il benessere inizia qui.</p>
     <br>
-    <a href="#contact" class="btn-primary">Scopri di più</a>
-  </div>
+    <a class="btn-primary" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">
+      Scopri di più
+    </a>
+      </div>
   <div class="custom-shape-divider-bottom-1751296690">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
@@ -19,12 +21,12 @@
     <div class="about-grid reveal-on-scroll" data-delay="0.1">
       <div class="about-text">
         <h2 class="section__title">Chi Sono</h2>
-        <p class="about-paragraph">Sono la Dottoressa <strong>Maria Pia Raso</strong>, Biologa Nutrizionista. La mia missione è guidarti a riscoprire il piacere di un'alimentazione sana e bilanciata, in armonia con le tue esigenze ed il tuo stile di vita. 
+        <p class="about-paragraph">Sono la Dottoressa <strong>Maria Pia Raso</strong>, Biologa Nutrizionista. Il mio obiettivo è guidarti a riscoprire il piacere di un'alimentazione sana e bilanciata, in armonia con le tue esigenze ed il tuo stile di vita. 
           Credo in un approccio scientifico ma empatico, per offrirti un piano nutrizionale personalizzato e sostenibile.</p>
         <a href="/Sito-web/chi-sono" class="about-link">Scopri di più su di me →</a>
       </div>
       <div class="about-image">
-        <img src="assets/images/pia.jpeg" alt="Dott.ssa Maria Pia Raso">
+        <img src="assets/images/herohome.jpg" alt="Dott.ssa Maria Pia Raso">
       </div>
     </div>
   </div>
@@ -81,12 +83,12 @@
         <ul class="card__list">
           <li>Valutazione della storia clinica, delle abitudini alimentari e dello stile di vita</li>
           <li>Raccolta informazioni su attività fisica ed eventuali problematiche di salute</li>
-          <li>Analisi delle analisi ematochimiche e referti medici</li>
+          <li>Valutazione delle analisi ematochimiche ed eventuali referti medici</li>
           <li>Analisi della composizione corporea con bioimpedenziometro Akern (BIA 101 BIVA PRO)</li>
           <li>Discussione delle motivazioni e definizione degli obiettivi</li>
+
         </ul>
         <p class="card__text">Seguirà l’invio del piano nutrizionale personalizzato (entro 15 giorni), con suggerimenti pratici per una gestione alimentare semplice e sostenibile.</p>
-        <p class="card__text"><strong>Cosa portare:</strong> analisi ematochimiche di routine ed eventuali referti medici.</p>
         <p class="card__text"><strong>Durata:</strong> circa 1 ora</p>
       </div>
 
@@ -96,7 +98,7 @@
         <h3 class="card__title">Controllo Nutrizionale</h3>
         <p class="card__text"><strong>Come si svolge:</strong></p>
         <ul class="card__list">
-          <li>Discussione sulla gestione del piano nutrizionale e difficoltà incontrate</li>
+          <li>Discussione sulla gestione del piano nutrizionale ed eventuali difficoltà riscontrate</li>
           <li>Misurazione dei parametri antropometrici e confronto con i precedenti</li>
           <li>Analisi della composizione corporea con bioimpedenziometro Akern (BIA 101 BIVA PRO)</li>
           <li>Valutazione dei progressi e eventuali modifiche al piano</li>
@@ -108,12 +110,12 @@
 
     <!-- Mini servizi -->
     <div class="mini-services-grid reveal-on-scroll" data-delay="0.3">
-      <div class="mini-service">🥗 Dieta Mediterranea</div>
-      <div class="mini-service">🤱 Dieta per Allattamento</div>
-      <div class="mini-service">🏋️ Dieta per Sportivi</div>
-      <div class="mini-service">🦠 Dieta per Disbiosi</div>
-      <div class="mini-service">🌾 Dieta per Celiaci</div>
-      <div class="mini-service">📊 Analisi della Composizione Corporea</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">🥗 Dieta Mediterranea</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">🤱 Dieta per Allattamento</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">🏋️ Dieta per Sportivi</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">🦠 Dieta per Disbiosi</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">🌾 Dieta per Celiaci</div>
+      <div class="mini-service" (click)="scrollToSectionPage('servizi','/servizi')">📊 Analisi della Composizione Corporea</div>
     </div>
 
     <br>
@@ -162,9 +164,9 @@
       </div>
       <!-- Immagine di sfondo che cambia -->
       <div class="metodo-background-images">
-        <img src="assets/images/primo.jpeg" alt="Valutazione nutrizionale" class="metodo-bg-image" data-step="0">
-        <img src="assets/images/secondo.jpeg" alt="Piano personalizzato" class="metodo-bg-image" data-step="1">
-        <img src="assets/images/terzo.jpeg" alt="Educazione alimentare" class="metodo-bg-image" data-step="2">
+        <img src="assets/images/primo.png" alt="Valutazione nutrizionale" class="metodo-bg-image" data-step="0">
+        <img src="assets/images/piano_personalizzato.png" alt="Piano personalizzato" class="metodo-bg-image" data-step="1">
+        <img src="assets/images/piramide1.png" alt="Educazione alimentare" class="metodo-bg-image" data-step="2">
         <img src="assets/images/quarto.jpeg" alt="Supporto continuo" class="metodo-bg-image" data-step="3">
       </div>
     </div>
@@ -185,8 +187,8 @@
       
       <div class="metodo-step-text" data-step="2">
         <h2>Educazione alimentare</h2>
-        <p>Mangiare bene non significa solo seguire uno schema alimentare, ma imparare a conoscere il cibo, ascoltare il proprio corpo e fare scelte consapevoli ogni giorno.
-          L'educazione alimentare è uno degli aspetti più importanti del mio lavoro: non mi limito a dare indicazioni su “cosa mangiare”, ma ho l’obiettivo di aiutarti a sviluppare una maggiore autonomia nelle scelte quotidiane. Imparerai a leggere le etichette, a bilanciare i nutrienti e a creare pasti sani e gustosi.</p>
+        <p>Mangiare bene non significa solo seguire uno schema alimentare, ma imparare a conoscere il cibo, ascoltare il proprio corpo e prendere decisioni consapevoli ogni giorno.
+          L'educazione alimentare è uno degli aspetti più importanti del mio lavoro: non mi limito a dare indicazioni su “cosa mangiare”, ma ho l’obiettivo di aiutarti a sviluppare una maggiore autonomia nelle scelte quotidiane. Ti guiderò a leggere le etichette, a bilanciare i nutrienti e a creare pasti sani e gustosi.</p>
         </div>
       
       <div class="metodo-step-text" data-step="3">
@@ -228,15 +230,15 @@
     </div>
     <div class="recipes-grid-teaser">
       <div class="recipe-card-teaser reveal-on-scroll" data-delay="0.1">
-        <img src="https://www.giallozafferano.it/images/ricette/9/977/foto_hd/hd650x433_wm.jpg" alt="Insalata di Ceci e Verdure">
+        <img src="assets/images/zucca.png" alt="Zucca">
         <div class="recipe-card-teaser__body">
-          <h3>Insalata di Ceci e Verdure</h3>
-          <p>Un piatto ricco di proteine vegetali e fibre, perfetto per un pranzo leggero e saziante.</p>
+          <h3>Burger di zucca</h3>
+          <p>Con soli 3 ingredienti puoi preparare questi burger di zucca, ideali per le tue cene autunnali          </p>
         </div>
       </div>
       
       <div class="recipe-card-teaser reveal-on-scroll" data-delay="0.2">
-        <img src="https://www.giallozafferano.it/images/ricette/9/977/foto_hd/hd650x433_wm.jpg" alt="Insalata di Ceci e Verdure">
+        <img src="assets/images/zuppa.png" alt="Insalata di Ceci e Verdure">
         <div class="recipe-card-teaser__body">
           <h3>Zuppa di Lenticchie e Verdure</h3>
           <p>Calda, nutriente e ricca di minerali, ideale per le giornate più fredde o come comfort food sano.</p>
@@ -244,7 +246,7 @@
       </div>
       
       <div class="recipe-card-teaser reveal-on-scroll" data-delay="0.3">
-        <img src="https://www.giallozafferano.it/images/ricette/9/977/foto_hd/hd650x433_wm.jpg" alt="Insalata di Ceci e Verdure">
+        <img src="assets/images/cocco.png" alt="Insalata di Ceci e Verdure">
         <div class="recipe-card-teaser__body">
           <h3>Energy Balls Cacao e Cocco</h3>
           <p>Snack sano e veloce, perfetto per una carica di energia senza zuccheri raffinati.</p>

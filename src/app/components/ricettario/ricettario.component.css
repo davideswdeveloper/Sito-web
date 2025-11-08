@@ -542,7 +542,7 @@ label {
 
 .header_wrapper {
   position: relative;
-  margin-left: 38dvh;
+  margin-left: 28dvh;
   top: 10dvh;
   transition: 0.8s ease-in;
   height: 50%;
@@ -551,36 +551,83 @@ label {
 .header_title {
   position: relative;
   font-family: "Courgette", cursive;
-  font-size: 90px;
-  line-height: 80px;
+  font-size: 64px;
+  line-height: 1.1;
   margin: 0;
   color: var(--primary-color);
-  max-width: 270px;
+  max-width: 40vw;
   background-color: var(--surface-color);
+  padding: 6px 10px;
+  border-radius: 8px;
   z-index: 10;
 }
 
 @media screen and (max-height: 470px) {
   .header_title {
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 42px;
+    line-height: 1.1;
   }
 }
 
 .header_subtitle {
   position: relative;
   font-family: "Courgette", cursive;
-  font-size: 32px;
-  margin-top: 2vh;
+  font-size: 22px;
+  margin-top: 1.2vh;
   color: var(--accent-color);
-  display: inline;
+  display: inline-block;
+  max-width: 55vw;
   background-color: var(--surface-color);
+  padding: 6px 10px;
+  border-radius: 8px;
   z-index: 10;
 }
 
 @media screen and (max-height: 470px) {
   .header_subtitle {
-    font-size: 24px;
+    font-size: 18px;
+  }
+}
+
+/* Layout responsive per evitare sovrapposizioni su schermi medi e piccoli */
+@media (max-width: 1200px) {
+  .header_wrapper {
+    margin-left: 6vw;
+    top: 6vh;
+  }
+  .header_title {
+    font-size: 48px;
+    max-width: 70vw;
+  }
+  .header_subtitle {
+    font-size: 20px;
+    max-width: 70vw;
+  }
+  .main_image {
+    right: 2%;
+    top: 6%;
+    max-height: 55vh;
+  }
+}
+
+@media (max-width: 900px) {
+  .header_wrapper {
+    margin-left: 0;
+    text-align: center;
+  }
+  .header_title,
+  .header_subtitle {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .main_image {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 2rem auto 0;
+    display: block;
+    max-height: 40vh;
   }
 }
 
@@ -605,12 +652,13 @@ label {
 
 .main_image {
   position: fixed;
-  top: -15%;
-  right: 3%;
-  max-height: 80dvh;
+  top: 45%;
+  right: 5%;
+  max-height: 50dvh;
   object-fit: contain;
   transition: 0.8s ease-in;
   transform: translate(0%, 0%) rotate(0deg);
+  z-index: 1;
 }
 
 .recipe_footer {
@@ -844,7 +892,7 @@ label {
 }
 
 .btn_animation__checkbox:checked ~ .main .main_image {
-  transform: translate(calc(-120% + 90vw), -30%);
+  transform: translate(calc(-120% + 90vw), -130%);
 }
 
 .btn_animation__checkbox:checked ~ .main .main_section {
@@ -878,26 +926,26 @@ label {
 }
 
 .selectedRecipe_list li {
-  padding: 0.2em 0;
+  padding: 0.6em 0;
   color: #222;
   font-family: 'Roboto', Arial, sans-serif;
-  border-bottom: none;
-  font-size: 1em;
+  border-bottom: 1px dashed #e5e7eb;
+  font-size: 1.02em;
   text-align: left;
 }
 
 .selectedRecipe_title {
-  font-weight: bold;
-  color: #222 !important;
-  margin-bottom: 0.5em;
-  font-size: 1.1em;
+  font-weight: 700;
+  color: #2F3138 !important;
+  margin-bottom: 0.75em;
+  font-size: 1.15em;
 }
 
 .total {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 2.5em;
+  gap: 3em;
   margin-bottom: 1.5em;
 }
 
@@ -1022,11 +1070,11 @@ label {
   list-style: none;
   padding: 0;
   margin: 0;
-  counter-reset: step-counter;
+  counter-reset: unset;
 }
 
 .steps-list li {
-  counter-increment: step-counter;
+  counter-increment: unset;
   margin-bottom: 1.5rem;
   padding: 1rem;
   background: #f8f9fa;
@@ -1066,7 +1114,7 @@ label {
 }
 
 .step-number::before {
-  content: counter(step-counter);
+  content: none;
 }
 
 .step-title {
@@ -1178,7 +1226,7 @@ label {
   
   .ingredients-section,
   .steps-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 5rem;
   }
   
   .ingredients-section h3,
@@ -1398,7 +1446,6 @@ label {
   }
 
   .hero-image {
-    width: 220px;
-    height: 220px;
+    display: none; /* su mobile nasconde l'immagine piattoPienoG2 */
   }
 }
